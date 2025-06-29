@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve HMrecord
+After=network.target
+[Service]
+User=hibhaqqi
+Group=hibhaqqi
+WorkingDirectory=/home/hibhaqqi/HMRecord
+Environment="PATH=/home/hibhaqqi/HMRecord/venv/bin"
+ExecStart=/home/hibhaqqi/HMRecord/venv/bin/gunicorn --bind 0.0.0.0:8000 run:app
+StandardOutput=file:/home/hibhaqqi/HMRecord/gunicorn.out.log
+StandardError=file:/home/hibhaqqi/HMRecord/gunicorn.err.log
+[Install]
+WantedBy=multi-user.target
